@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure", "weather.nsu.ru.azure\weather.nsu.ru.azure.csproj", "{D1325A40-7729-4262-B8EE-3856112173C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Tests", "weather.nsu.ru.azure.Tests\weather.nsu.ru.azure.Tests.csproj", "{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FD704919-3CB5-45C1-A613-B52BFA3B17DD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1325A40-7729-4262-B8EE-3856112173C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1325A40-7729-4262-B8EE-3856112173C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1325A40-7729-4262-B8EE-3856112173C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1325A40-7729-4262-B8EE-3856112173C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
