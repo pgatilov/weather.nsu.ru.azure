@@ -3,7 +3,7 @@ using System.Web.Optimization;
 
 namespace weather.nsu.ru.azure
 {
-    public class BundleConfig
+    internal class BundleConfig
     {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)

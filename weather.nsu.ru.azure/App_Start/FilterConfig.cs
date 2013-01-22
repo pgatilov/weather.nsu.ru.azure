@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace weather.nsu.ru.azure
 {
-    public class FilterConfig
+    internal class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {

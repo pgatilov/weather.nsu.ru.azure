@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace weather.nsu.ru.azure
 {
-    public static class WebApiConfig
+    internal static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
