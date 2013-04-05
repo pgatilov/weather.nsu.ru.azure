@@ -12,6 +12,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FD7049
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Data", "weather.nsu.ru.azure.Data\weather.nsu.ru.azure.Data.csproj", "{F246859A-7BCC-4824-9493-BAFA88FC1600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Data.Tests", "weather.nsu.ru.azure.Data.Tests\weather.nsu.ru.azure.Data.Tests.csproj", "{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Common", "weather.nsu.ru.azure.Common\weather.nsu.ru.azure.Common.csproj", "{3794D15B-02FC-4748-BF24-213C6D4A5422}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Common.Tests", "weather.nsu.ru.azure.Common.Tests\weather.nsu.ru.azure.Common.Tests.csproj", "{E6F730C7-B8C5-49EB-8744-1973F95C7BAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +36,29 @@ Global
 		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F246859A-7BCC-4824-9493-BAFA88FC1600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F246859A-7BCC-4824-9493-BAFA88FC1600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F246859A-7BCC-4824-9493-BAFA88FC1600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F246859A-7BCC-4824-9493-BAFA88FC1600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3794D15B-02FC-4748-BF24-213C6D4A5422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3794D15B-02FC-4748-BF24-213C6D4A5422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3794D15B-02FC-4748-BF24-213C6D4A5422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3794D15B-02FC-4748-BF24-213C6D4A5422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6F730C7-B8C5-49EB-8744-1973F95C7BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F730C7-B8C5-49EB-8744-1973F95C7BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F730C7-B8C5-49EB-8744-1973F95C7BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F730C7-B8C5-49EB-8744-1973F95C7BAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
+		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
+		{E6F730C7-B8C5-49EB-8744-1973F95C7BAD} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
 	EndGlobalSection
 EndGlobal

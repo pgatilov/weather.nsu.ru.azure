@@ -1,5 +1,16 @@
-﻿@{
+﻿@using weather.nsu.ru.azure;
+@{
     ViewBag.Title = "Температура около НГУ";
 }
+@model weather.nsu.ru.azure.Models.HomePageModel
 
+<section class="current temperature">
+    <div class="center-wrapper">
+        <div class="center-content-container">
+            <p class="label">@Resources.CurrentTemperatureLabel</p>
+            <p class="value">@Model.CurrentTemperature</p>
+
+        </div>
+    </div>
+</section>
 

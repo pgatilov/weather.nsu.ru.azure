@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +8,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using weather.nsu.ru.azure.Data;
 
 namespace weather.nsu.ru.azure
 {
@@ -22,12 +25,21 @@ namespace weather.nsu.ru.azure
         /// </summary>
         protected void Application_Start()
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterModule<MainModule>();
+            builder.RegisterModule<DataModule>();
+            builder.RegisterModule<AutofacWebTypesModule>();
+            var container = builder.Build();
+
+            // autofac for MVC 4
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
             AreaRegistration.RegisterAllAreas();
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
     }
 }

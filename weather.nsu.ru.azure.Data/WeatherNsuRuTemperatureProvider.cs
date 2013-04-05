@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using weather.nsu.ru.azure.Common.Extensions;
+
+namespace weather.nsu.ru.azure.Data
+{
+    class WeatherNsuRuTemperatureProvider : ITemperatureProvider
+    {
+        readonly IWeatherNsuRuTemperatureParser _parser;
+        readonly Random _random = new Random();
+
+        public WeatherNsuRuTemperatureProvider(IWeatherNsuRuTemperatureParser parser) 
+        {
+            if (parser == null) 
+            {
+                throw new ArgumentNullException("parser");
+            }
+
+            _parser = parser;
+        }
+
+        public async Task<Temperature> GetCurrentTemperature()
+        {
+            var requestUrlString = string.Format(CultureInfo.InvariantCulture, "/loadata.php?tick={0}&rand={1}&std=three", DateTime.UtcNow.ToUnixEpoch(), _random.NextDouble());
+
+            string dataString;
+            using (var http = CreateHttpClient())
+            {
+                dataString = await http.GetStringAsync(requestUrlString);
+            }
+
+            return _parser.ParseCurrentTemperature(dataString);
+        }
+
+        private static HttpClient CreateHttpClient()
+        {
+            return new HttpClient
+            {
+                BaseAddress = Properties.Settings.Default.SourceBaseUri,
+                
+            };
+        }
+    }
+}
