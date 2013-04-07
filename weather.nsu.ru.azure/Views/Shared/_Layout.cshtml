@@ -10,7 +10,19 @@
 <body>
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
+    @{
+#if DEBUG
+        var cdnJqueryHref = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.js";
+#else
+        var cdnJqueryHref = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js";
+#endif
+    }
+    @Scripts.Render(cdnJqueryHref)
+     <script type="text/javascript">
+         // Fallback to loading jQuery from a local path if the CDN is unavailable
+         (window.jQuery || document.write('<script src="~/bundles/jquery" type="text.javascript"><\/script>'));
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
