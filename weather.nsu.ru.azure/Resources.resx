@@ -120,4 +120,7 @@
   <data name="CurrentTemperatureLabel" xml:space="preserve">
     <value>Now</value>
   </data>
+  <data name="HomePageTitle" xml:space="preserve">
+    <value>Temperature near the NSU</value>
+  </data>
 </root>

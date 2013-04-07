@@ -68,5 +68,14 @@ namespace weather.nsu.ru.azure {
                 return ResourceManager.GetString("CurrentTemperatureLabel", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature near the NSU.
+        /// </summary>
+        public static string HomePageTitle {
+            get {
+                return ResourceManager.GetString("HomePageTitle", resourceCulture);
+            }
+        }
     }
 }
