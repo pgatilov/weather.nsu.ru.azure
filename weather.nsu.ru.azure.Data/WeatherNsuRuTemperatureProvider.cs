@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -32,7 +33,10 @@ namespace weather.nsu.ru.azure.Data
             string dataString;
             using (var http = CreateHttpClient())
             {
+                var sw = Stopwatch.StartNew();
                 dataString = await http.GetStringAsync(requestUrlString);
+                sw.Stop();
+                Trace.TraceInformation("weather.nsu.ru responded in {0} ms", sw.ElapsedMilliseconds);
             }
 
             return _parser.ParseCurrentTemperature(dataString);
