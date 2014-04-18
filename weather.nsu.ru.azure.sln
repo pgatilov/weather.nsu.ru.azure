@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure", "weather.nsu.ru.azure\weather.nsu.ru.azure.csproj", "{D1325A40-7729-4262-B8EE-3856112173C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Tests", "weather.nsu.ru.azure.Tests\weather.nsu.ru.azure.Tests.csproj", "{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}"
-EndProject
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FD704919-3CB5-45C1-A613-B52BFA3B17DD}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -12,17 +10,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FD7049
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{696B58D6-F857-459B-BDE3-0277FC9EFD3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure", "weather.nsu.ru.azure\weather.nsu.ru.azure.csproj", "{D1325A40-7729-4262-B8EE-3856112173C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Tests", "weather.nsu.ru.azure.Tests\weather.nsu.ru.azure.Tests.csproj", "{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Data", "weather.nsu.ru.azure.Data\weather.nsu.ru.azure.Data.csproj", "{F246859A-7BCC-4824-9493-BAFA88FC1600}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Data.Tests", "weather.nsu.ru.azure.Data.Tests\weather.nsu.ru.azure.Data.Tests.csproj", "{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Common", "weather.nsu.ru.azure.Common\weather.nsu.ru.azure.Common.csproj", "{3794D15B-02FC-4748-BF24-213C6D4A5422}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.nsu.ru.azure.Common.Tests", "weather.nsu.ru.azure.Common.Tests\weather.nsu.ru.azure.Common.Tests.csproj", "{E6F730C7-B8C5-49EB-8744-1973F95C7BAD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{696B58D6-F857-459B-BDE3-0277FC9EFD3B}"
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "weather.nsu.ru.azure.DataService", "weather.nsu.ru.azure.DataService\weather.nsu.ru.azure.DataService.ccproj", "{BE5D54C9-43D7-457C-BFA8-D3D28D237529}"
 EndProject
@@ -71,8 +73,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
 		{15E85C3B-D6B4-4FDD-A759-EE2E02A908F6} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
+		{B853F1C6-2791-4A92-ACFA-8BD3D21BEAC8} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
 		{E6F730C7-B8C5-49EB-8744-1973F95C7BAD} = {2AD7872A-A9CC-42BC-84CC-08BEE6A5F2E1}
 		{BE5D54C9-43D7-457C-BFA8-D3D28D237529} = {696B58D6-F857-459B-BDE3-0277FC9EFD3B}
 		{E8A10509-CB83-4BA6-BA0D-FFA96E7EE6E1} = {696B58D6-F857-459B-BDE3-0277FC9EFD3B}
