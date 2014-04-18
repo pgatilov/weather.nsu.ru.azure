@@ -22,8 +22,8 @@ namespace weather.nsu.ru.azure.Data
             }
 
             const string temperatureGroupName = "temperature";
-            var pattern = string.Format(@"if\s*\(\s*cnv\s*\)\s+cnv.innerHTML\s+=\s+'(?<{0}>(\+|-)?\d+\.\d+)&deg;C';", temperatureGroupName);
-            var match = Regex.Match(dataString, pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            var pattern = string.Format(@"id\s+=\s+'temp';.*?if\s*\(\s*cnv\s*\)\s+cnv\.innerHTML\s+=\s+'(?<{0}>(\+|-)?\d+\.\d+)&deg;C';.*?id\s+=\s+'avertemp';", temperatureGroupName);
+            var match = Regex.Match(dataString, pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
             if (!match.Success)
             {

@@ -61,7 +61,7 @@ id = 'temp';
 cnv = document.all? (document.all[id] || null)
         : document.getElementById? (document.getElementById(id) || null)
         : null;
-if(cnv) cnv.innerHTML = '0.623523452345234523452345234523452345&deg;C';
+if(cnv) cnv.innerHTML = '0.623523452345234523qwe345234523452345&deg;C';
 window.document.title = 'Температура около НГУ 0.6 C';
 
 id = 'avertemp';
