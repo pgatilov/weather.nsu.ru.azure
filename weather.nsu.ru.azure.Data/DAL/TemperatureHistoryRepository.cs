@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace weather.nsu.ru.azure.Data.DAL
@@ -20,7 +19,7 @@ namespace weather.nsu.ru.azure.Data.DAL
             if (dateTo.HasValue)
                 query = query.Where(x => x.Taken <= dateTo.Value);
 
-            var lastMeasurement = query.ToListAsync()
+            var lastMeasurement = await query.FirstOrDefaultAsync();
             return lastMeasurement != null 
                 ? new Temperature(lastMeasurement.Value.Value, lastMeasurement.Value.Unit) 
                 : (Temperature?)null;

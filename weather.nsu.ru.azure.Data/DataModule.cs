@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using weather.nsu.ru.azure.Common.Autofac;
+using weather.nsu.ru.azure.Data.DAL;
 
 namespace weather.nsu.ru.azure.Data
 {
@@ -24,6 +25,13 @@ namespace weather.nsu.ru.azure.Data
 
             builder.RegisterType<WeatherNsuRuTemperatureParser>().AsImplementedInterfaces()
                 .FindConstructorsWith(AnyConstructorFinder.Instance);
+
+            builder.RegisterDecorator<ITemperatureProvider>(
+                (ctx, p) => new CachedTemperatureProvider(ctx.Resolve<ITemperatureHistoryRepository>(), p),
+                typeof (ITemperatureProvider))
+                .As<ITemperatureProvider>();
+
+            builder.RegisterType<TemperatureHistoryRepository>().AsImplementedInterfaces()
         }
     }
 }
