@@ -31,16 +31,20 @@ namespace weather.nsu.ru.azure.Data
         /// Retrieves record from cache if non stale exists, otherwise falls back to wrapped provider.
         /// </summary>
         /// <returns>A task that returns current temperature.</returns>
-        public async Task<Temperature> GetCurrentTemperature()
+        public async Task<TemperatureMeasurementRecord> GetCurrentTemperature()
         {
             var cachedRecord =
                 await _temperatureHistoryRepository.GetLastTemperatureRecord(DateTime.UtcNow - CachedCurrentTemperatureExpiration);
             if (cachedRecord != null)
             {
-                return cachedRecord.Value;
+                return cachedRecord;
             }
 
-            return await _fallbackProvider.GetCurrentTemperature();
+            var currentTemperature = await _fallbackProvider.GetCurrentTemperature();
+
+            await _temperatureHistoryRepository.StoreTemperatureMeasurement(currentTemperature);
+
+            return currentTemperature;
         }
     }
 }

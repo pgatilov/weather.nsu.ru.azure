@@ -15,6 +15,6 @@ namespace weather.nsu.ru.azure.Data
         /// Gets the current temperature.
         /// </summary>
         /// <returns>A task that returns the current temperature value.</returns>
-        Task<Temperature> GetCurrentTemperature();
+        Task<TemperatureMeasurementRecord> GetCurrentTemperature();
     }
 }

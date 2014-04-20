@@ -10,7 +10,7 @@ namespace weather.nsu.ru.azure.Data.DAL
     {
         private readonly TemperatureHistoryContext _context = new TemperatureHistoryContext("DefaultConnection");
 
-        public async Task<Temperature?> GetLastTemperatureRecord(DateTime? dateFrom = null, DateTime? dateTo = null)
+        public async Task<TemperatureMeasurementRecord> GetLastTemperatureRecord(DateTime? dateFrom = null, DateTime? dateTo = null)
         {
             var query = _context.TemperatureMeasurements.AsQueryable();
 
@@ -21,25 +21,26 @@ namespace weather.nsu.ru.azure.Data.DAL
                 query = query.Where(x => x.Taken <= dateTo.Value);
 
             var lastMeasurement = await query.FirstOrDefaultAsync();
-            return lastMeasurement != null 
-                ? new Temperature(lastMeasurement.Value.Value, lastMeasurement.Value.Unit) 
-                : (Temperature?)null;
+            return lastMeasurement != null
+                ? new TemperatureMeasurementRecord(new Temperature(lastMeasurement.Value.Value, lastMeasurement.Value.Unit), lastMeasurement.Taken)
+                : null;
         }
 
 
-        public Task StoreTemperatureMeasurement(Temperature currentTemperature, DateTime dateTime)
+        public async Task StoreTemperatureMeasurement(TemperatureMeasurementRecord record)
         {
             var newRecord = new TemperatureMeasurement
             {
-                Taken = dateTime,
+                Taken = record.Taken,
                 Value = new TemperatureValue
                 {
-                    Unit = currentTemperature.Unit,
-                    Value = (float)currentTemperature.Value
+                    Unit = record.Temperature.Unit,
+                    Value = (float)record.Temperature.Value
                 }
             };
 
-
+            _context.TemperatureMeasurements.Add(newRecord);
+            await _context.SaveChangesAsync();
         }
     }
 }

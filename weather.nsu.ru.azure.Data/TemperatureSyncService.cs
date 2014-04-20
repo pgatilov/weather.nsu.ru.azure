@@ -9,6 +9,8 @@ namespace weather.nsu.ru.azure.Data
 {
     internal class TemperatureSyncService : ITemperatureSyncService
     {
+        private static readonly TimeSpan CacheSyncInterval = TimeSpan.FromMinutes(1);
+
         private readonly ITemperatureHistoryRepository _temperatureHistoryRepository;
         private readonly ITemperatureDataSource _temperatureDataSource;
 
@@ -30,9 +32,16 @@ namespace weather.nsu.ru.azure.Data
 
         public async Task SyncCurrentTemperature()
         {
+            var now = DateTime.UtcNow;
+            var lastCachedRecord = await _temperatureHistoryRepository.GetLastTemperatureRecord(now - CacheSyncInterval);
+            if (lastCachedRecord != null) 
+            {
+                return;
+            }
+
             var currentTemperature = await _temperatureDataSource.GetCurrentTemperature();
 
-            await _temperatureHistoryRepository.StoreTemperatureMeasurement(currentTemperature, DateTime.UtcNow);
+            await _temperatureHistoryRepository.StoreTemperatureMeasurement(currentTemperature);
         }
     }
 }

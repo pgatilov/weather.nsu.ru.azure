@@ -38,7 +38,7 @@ namespace weather.nsu.ru.azure
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             // autofac for Web API
-            GlobalConfiguration.Configuration.DependencyResolver = new AutofacDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
             AreaRegistration.RegisterAllAreas();
 

@@ -40,7 +40,7 @@ namespace weather.nsu.ru.azure.Controllers
 
             var model = new HomePageModel
             {
-                CurrentTemperature = temperature
+                CurrentTemperature = temperature.Temperature
             };
 
             return View(model);

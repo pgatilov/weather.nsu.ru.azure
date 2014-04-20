@@ -89,6 +89,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Temperature.cs" />
     <Compile Include="DAL\TemperatureHistoryContext.cs" />
+    <Compile Include="TemperatureMeasurementRecord.cs" />
     <Compile Include="TemperatureSyncService.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="WeatherNsuRuTemperatureParser.cs" />
