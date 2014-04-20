@@ -9,15 +9,30 @@ namespace weather.nsu.ru.azure.Data
 {
     internal class TemperatureSyncService : ITemperatureSyncService
     {
-        private readonly _temperatureHistoryRepository;
+        private readonly ITemperatureHistoryRepository _temperatureHistoryRepository;
+        private readonly ITemperatureDataSource _temperatureDataSource;
 
-        public TemperatureSyncService(ITemperatureHistoryRepository temperatureHistoryRepository) 
+        public TemperatureSyncService(ITemperatureHistoryRepository temperatureHistoryRepository, ITemperatureDataSource temperatureDataSource) 
         {
+            if (temperatureHistoryRepository == null) 
+            {
+                throw new ArgumentNullException("temperatureHistoryRepository");
+            }
+
+            if (temperatureDataSource == null) 
+            {
+                throw new ArgumentNullException("temperatureDataSource");
+            }
+
+            _temperatureHistoryRepository = temperatureHistoryRepository;
+            _temperatureDataSource = temperatureDataSource;
         }
 
-        public Task SyncCurrentTemperature()
+        public async Task SyncCurrentTemperature()
         {
-            throw new NotImplementedException();
+            var currentTemperature = await _temperatureDataSource.GetCurrentTemperature();
+
+            await _temperatureHistoryRepository.StoreTemperatureMeasurement(currentTemperature, DateTime.UtcNow);
         }
     }
 }

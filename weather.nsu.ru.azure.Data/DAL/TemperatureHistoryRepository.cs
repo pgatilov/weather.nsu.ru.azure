@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using weather.nsu.ru.azure.Data.DataModel;
 
 namespace weather.nsu.ru.azure.Data.DAL
 {
@@ -23,6 +24,22 @@ namespace weather.nsu.ru.azure.Data.DAL
             return lastMeasurement != null 
                 ? new Temperature(lastMeasurement.Value.Value, lastMeasurement.Value.Unit) 
                 : (Temperature?)null;
+        }
+
+
+        public Task StoreTemperatureMeasurement(Temperature currentTemperature, DateTime dateTime)
+        {
+            var newRecord = new TemperatureMeasurement
+            {
+                Taken = dateTime,
+                Value = new TemperatureValue
+                {
+                    Unit = currentTemperature.Unit,
+                    Value = (float)currentTemperature.Value
+                }
+            };
+
+
         }
     }
 }

@@ -9,5 +9,7 @@ namespace weather.nsu.ru.azure.Data.DAL
     internal interface ITemperatureHistoryRepository
     {
         Task<Temperature?> GetLastTemperatureRecord(DateTime? dateFrom = null, DateTime? dateTo = null);
+
+        Task StoreTemperatureMeasurement(Temperature currentTemperature, DateTime dateTime);
     }
 }

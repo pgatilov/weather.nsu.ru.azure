@@ -22,7 +22,8 @@ namespace weather.nsu.ru.azure.Data
         {
             builder.RegisterType<WeatherNsuRuTemperatureProvider>()
                 .FindConstructorsWith(AnyConstructorFinder.Instance)
-                .Named<ITemperatureProvider>("DataOrigin");
+                .Named<ITemperatureProvider>("DataOrigin")
+                .As<ITemperatureDataSource>();
 
             builder.RegisterType<WeatherNsuRuTemperatureParser>().AsImplementedInterfaces()
                 .FindConstructorsWith(AnyConstructorFinder.Instance);
@@ -32,6 +33,9 @@ namespace weather.nsu.ru.azure.Data
                 "DataOrigin");
 
             builder.RegisterType<TemperatureHistoryRepository>().AsImplementedInterfaces();
+
+            builder.RegisterType<TemperatureSyncService>().FindConstructorsWith(AnyConstructorFinder.Instance)
+                .AsImplementedInterfaces();
         }
     }
 }

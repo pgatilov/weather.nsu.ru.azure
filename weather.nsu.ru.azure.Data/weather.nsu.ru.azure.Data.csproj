@@ -76,6 +76,7 @@
     <Compile Include="DataModel\TemperatureValue.cs" />
     <Compile Include="DataModule.cs" />
     <Compile Include="InvalidDataSourceException.cs" />
+    <Compile Include="ITemperatureDataSource.cs" />
     <Compile Include="ITemperatureSyncService.cs" />
     <Compile Include="IWeatherNsuRuTemperatureParser.cs" />
     <Compile Include="ITemperatureProvider.cs" />
