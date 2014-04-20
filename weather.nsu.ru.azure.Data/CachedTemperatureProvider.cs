@@ -12,7 +12,7 @@ namespace weather.nsu.ru.azure.Data
     /// </summary>
     public class CachedTemperatureProvider : ITemperatureProvider
     {
-        private static readonly DateTime CachedCurrentTemperatureExpiration = DateTime.UtcNow.AddMinutes(-5);
+        private static readonly TimeSpan CachedCurrentTemperatureExpiration = TimeSpan.FromMinutes(5);
 
         private readonly ITemperatureHistoryRepository _temperatureHistoryRepository;
         private readonly ITemperatureProvider _fallbackProvider;
@@ -34,7 +34,7 @@ namespace weather.nsu.ru.azure.Data
         public async Task<Temperature> GetCurrentTemperature()
         {
             var cachedRecord =
-                await _temperatureHistoryRepository.GetLastTemperatureRecord(CachedCurrentTemperatureExpiration);
+                await _temperatureHistoryRepository.GetLastTemperatureRecord(DateTime.UtcNow - CachedCurrentTemperatureExpiration);
             if (cachedRecord != null)
             {
                 return cachedRecord.Value;

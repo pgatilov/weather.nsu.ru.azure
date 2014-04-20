@@ -20,18 +20,18 @@ namespace weather.nsu.ru.azure.Data
         /// <param name="builder">The container builder.</param>
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<WeatherNsuRuTemperatureProvider>().AsImplementedInterfaces()
-                .FindConstructorsWith(AnyConstructorFinder.Instance);
+            builder.RegisterType<WeatherNsuRuTemperatureProvider>()
+                .FindConstructorsWith(AnyConstructorFinder.Instance)
+                .Named<ITemperatureProvider>("DataOrigin");
 
             builder.RegisterType<WeatherNsuRuTemperatureParser>().AsImplementedInterfaces()
                 .FindConstructorsWith(AnyConstructorFinder.Instance);
 
             builder.RegisterDecorator<ITemperatureProvider>(
                 (ctx, p) => new CachedTemperatureProvider(ctx.Resolve<ITemperatureHistoryRepository>(), p),
-                typeof (ITemperatureProvider))
-                .As<ITemperatureProvider>();
+                "DataOrigin");
 
-            builder.RegisterType<TemperatureHistoryRepository>().AsImplementedInterfaces()
+            builder.RegisterType<TemperatureHistoryRepository>().AsImplementedInterfaces();
         }
     }
 }
