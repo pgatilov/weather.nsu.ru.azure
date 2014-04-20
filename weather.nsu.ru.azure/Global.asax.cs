@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -29,10 +31,14 @@ namespace weather.nsu.ru.azure
             builder.RegisterModule<MainModule>();
             builder.RegisterModule<DataModule>();
             builder.RegisterModule<AutofacWebTypesModule>();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             var container = builder.Build();
 
             // autofac for MVC 4
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            // autofac for Web API
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacDependencyResolver(container);
 
             AreaRegistration.RegisterAllAreas();
 
