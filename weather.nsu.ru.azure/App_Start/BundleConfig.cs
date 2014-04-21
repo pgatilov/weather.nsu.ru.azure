@@ -14,6 +14,16 @@ namespace weather.nsu.ru.azure
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryGlobalize").Include(
+                "~/Scripts/jquery.globalize/globalize.js",
+                "~/Scripts/jquery.globalize/cultures/globalize.culture.en-US.js",
+                "~/Scripts/jquery.globalize/cultures/globalize.culture.ru-RU.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/chartJs").Include(
+                "~/Scripts/chartjs-modules/dx.module-core.js",
+                "~/Scripts/chartjs-modules/dx.module-viz-core.js",
+                "~/Scripts/chartjs-modules/dx.module-viz-chart.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

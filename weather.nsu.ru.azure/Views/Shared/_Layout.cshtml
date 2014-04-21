@@ -5,23 +5,39 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+
     @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+        (window.Modernizr || document.write('<script src="~/bundles/modernizr" type="text/javascript"><\/script>'));
+    </script>
 </head>
 <body>
     @RenderBody()
 
     @{
 #if DEBUG
-        var cdnJqueryHref = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.js";
+        const string cdnJqueryHref = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.js";
+        const string cdnJqueryGlobalizeHref = "http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.js";
+
+        const string chartJsCdnHref = "http://cdn3.devexpress.com/jslib/13.2.9/js/dx.chartjs.debug.js";
 #else
-        var cdnJqueryHref = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js";
+        const string cdnJqueryHref = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js";
+        const string cdnJqueryGlobalizeHref = "http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js";
+
+        const string chartJsCdnHref = "http://cdn3.devexpress.com/jslib/13.2.9/js/dx.chartjs.js";
 #endif
     }
-    @Scripts.Render(cdnJqueryHref)
+    @Scripts.Render(cdnJqueryHref, cdnJqueryGlobalizeHref,
+        "http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.en-US.js",
+        "http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.ru-RU.js",
+        
+        chartJsCdnHref)
      <script type="text/javascript">
          // Fallback to loading jQuery from a local path if the CDN is unavailable
-         (window.jQuery || document.write('<script src="~/bundles/jquery" type="text.javascript"><\/script>'));
-    </script>
+         (window.jQuery || document.write('<script src="~/bundles/jquery" type="text/javascript"><\/script>'));
+         (window.Globalize || document.write('<script src="~/bundles/jqueryGlobalize" type="text/javascript"><\/script>'));
+         (window.DevExpress || document.write('<script src="~/bundles/chartJs" type="text/javascript"><\/script>'));
+     </script>
 
     @RenderSection("scripts", required: false)
 </body>
